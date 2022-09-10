@@ -1,12 +1,20 @@
 package com.elfak.qair.ui.statistics
 
+import android.app.AlertDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.elfak.qair.R
 import com.elfak.qair.databinding.FragmentStatisticsBinding
+import com.elfak.qair.ui.helpers.ChartCustomFormatter
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 
 class StatisticsFragment : Fragment() {
 
@@ -25,12 +33,53 @@ class StatisticsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        statisticsViewModel.getCountryIndices("Serbia")
+        binding.textViewCurrentCountry.visibility = View.GONE
+        binding.chart.visibility = View.GONE
+        binding.progressBar.visibility = View.VISIBLE
+
+        binding.buttonSearchCountry.setOnClickListener { view ->
+            val inflater = layoutInflater
+            val dialogLayout = inflater.inflate(R.layout.search_country_statistic_dialog, null)
+            val editText  = dialogLayout.findViewById<EditText>(R.id.editTextEnterCountry)
+            AlertDialog.Builder(requireContext())
+                        .setTitle("Pretraživanje države za statistiku o kvalitetu vazduha")
+                        .setView(dialogLayout)
+                        .setPositiveButton("Pretraži") { _, _ ->
+                            binding.progressBar.visibility = View.VISIBLE
+                            statisticsViewModel.getCountryIndices(editText.text.toString())
+                        }
+                        .show()
+        }
+
+        statisticsViewModel.country.observe(viewLifecycleOwner) { country ->
+            binding.textViewCurrentCountry.text = "Trenutni podaci za državu: ${country}"
+            binding.textViewCurrentCountry.visibility = View.VISIBLE
+        }
 
         statisticsViewModel.countryIndices.observe(viewLifecycleOwner) { indices ->
-            indices.size
-        }
-    }
+            if(indices.size!=0){
+                val entries: MutableList<Entry> = ArrayList()
+                indices.forEach {
+                    entries.add(Entry(it.date.seconds.toFloat(), it.aqiIndex.toFloat()))
+                }
 
+                val dataSet = LineDataSet(entries, "Indeks kvaliteta vazduha meren svakog dana u prethodnih dva meseca")
+                val lineData = LineData(dataSet)
+                binding.chart.xAxis.valueFormatter = ChartCustomFormatter()
+                binding.chart.data = lineData
+                binding.chart.description.isEnabled = false
+                binding.chart.setGridBackgroundColor(R.color.palette4)
+                binding.chart.invalidate()
+                binding.chart.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.GONE
+            } else{
+                binding.textViewCurrentCountry.visibility = View.GONE
+                binding.chart.visibility = View.GONE
+                binding.progressBar.visibility = View.GONE
+                Toast.makeText(requireContext(), "Aplikacija nema podatke za ovu državu, probajte malo kasnije.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        statisticsViewModel.getCountryIndices("Serbia")
+    }
 
 }

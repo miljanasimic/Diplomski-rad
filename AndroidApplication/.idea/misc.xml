@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/drawable-mdpi/rounded_layout.xml" value="0.176" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/drawable-xhdpi/bottom_nav_item_color.xml" value="0.1" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/drawable/ic_baseline_close.xml" value="0.2965" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/drawable/rounded_button.xml" value="0.2145" />
@@ -10,8 +11,10 @@
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/content_main.xml" value="0.1921875" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/fragment_intro.xml" value="0.1" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/fragment_ranking.xml" value="0.16041666666666668" />
-        <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/fragment_statistics.xml" value="0.16041666666666668" />
+        <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/fragment_statistics.xml" value="0.4" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/fragment_weather.xml" value="0.264" />
+        <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/search_country_statistic.xml" value="0.196875" />
+        <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/search_country_statistic_dialog.xml" value="0.13134057971014493" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/menu/bottom_menu.xml" value="0.16041666666666668" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/menu/menu.xml" value="0.14635416666666667" />
       </map>

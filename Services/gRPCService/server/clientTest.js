@@ -15,7 +15,7 @@ const service = grpc.loadPackageDefinition(packageDefinition).airqualityindexser
 
 function main() {
     const client = new service.AirQualityIndexService('localhost:50051', grpc.credentials.createInsecure())
-    const call = client.streamCountryIndices({name: 'China'})
+    const call = client.streamCountryIndices({name: 'Serbia'})
     console.log('Client calling server`s method')
     call.on('data', function(response){
         console.log(response)

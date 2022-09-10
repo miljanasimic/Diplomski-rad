@@ -7,11 +7,9 @@ import androidx.lifecycle.ViewModel
 import com.elfak.qair.AirQualityIndexServiceGrpc
 import com.elfak.qair.CountryAQIndexResponse
 import com.elfak.qair.CountryRequest
-import com.elfak.qair.data.response.CityCurrentDataApiResponse
 import com.elfak.qair.network.grpc.GrpcService
 import io.grpc.stub.StreamObserver
 import java.lang.Exception
-import java.util.concurrent.TimeUnit
 
 class StatisticsViewModel : ViewModel(){
 
@@ -20,9 +18,9 @@ class StatisticsViewModel : ViewModel(){
     private val _countryIndices = MutableLiveData<MutableList<CountryAQIndexResponse>>()
     val countryIndices: LiveData<MutableList<CountryAQIndexResponse>> = _countryIndices
 
-    init {
-        _countryIndices.postValue(mutableListOf())
-    }
+    private val _country: MutableLiveData<String?> = MutableLiveData<String?>()
+    val country: LiveData<String?> = _country
+
 
     fun getCountryIndices(countryName: String){
         try{
@@ -33,7 +31,7 @@ class StatisticsViewModel : ViewModel(){
                 override fun onNext(newIndex: CountryAQIndexResponse?) {
                     if(newIndex!=null){
                         if(_countryIndices.value==null)
-                            _countryIndices.value = mutableListOf(newIndex)
+                            _countryIndices.postValue(mutableListOf(newIndex))
                         _countryIndices.value?.add(newIndex)
                     }
                 }
@@ -41,12 +39,11 @@ class StatisticsViewModel : ViewModel(){
                     Log.e("Error grpc method", t?.message.toString())
                 }
                 override fun onCompleted() {
+                    if(_countryIndices.value?.size!! >0)
+                        _country.postValue(countryName)
                     _countryIndices.postValue(_countryIndices.value)
                 }
             })
-            //Log.e("response", reply.toString())
-            //channel?.shutdown()?.awaitTermination(1, TimeUnit.SECONDS)
-            //bla bla
         } catch (ex: Exception){
             ex.message
             ex.toString()
