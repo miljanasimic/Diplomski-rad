@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.elfak.qair";
+option java_outer_classname = "AQIndexProto";
+
+package airqualityindexservice;
+
+
+service AirQualityIndexService {
+	rpc StreamCountryIndices(CountryRequest) returns (stream CountryAQIndexResponse) {}	
+}
+
+message CountryRequest {
+	string name = 1;
+}
+message CountryAQIndexResponse {
+	string date = 1;
+	string country = 2;
+	string status = 3;
+	int32 aqi_index = 4;
+}
