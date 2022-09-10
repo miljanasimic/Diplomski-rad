@@ -26,24 +26,21 @@ AndroidApplication/captures/
 Services/GraphQLService/node_modules
 Services/gRPCService/node_modules
 
-Services/gRPCService/GatewayService/.vscode
-Services/gRPCService/GatewayService/.vs
+Services/GatewayService/.vscode
+Services/GatewayService/.vs
 
 # Build results
-Services/gRPCService/GatewayService/*/[Dd]ebug/
-Services/gRPCService/GatewayService/*/[Dd]ebugPublic/
-Services/gRPCService/GatewayService/*/[Rr]elease/
-Services/gRPCService/GatewayService/*/[Rr]eleases/
-Services/gRPCService/GatewayService/*/x64/
-Services/gRPCService/GatewayService/*/x86/
-Services/gRPCService/GatewayService/*/build/
-Services/gRPCService/GatewayService/*/bld/
-Services/gRPCService/GatewayService/*/[Bb]in/
-Services/gRPCService/GatewayService/*/[Oo]bj/
-Services/gRPCService/GatewayService/*/[Oo]ut/
-Services/gRPCService/GatewayService/*/msbuild.log
-Services/gRPCService/GatewayService/*/msbuild.err
-Services/gRPCService/GatewayService/*/msbuild.wrn
-
-git rm -r --cached Services/GatewayService/GatewayLogic/bin
-
+Services/GatewayService/*/[Dd]ebug/
+Services/GatewayService/*/[Dd]ebugPublic/
+Services/GatewayService/*/[Rr]elease/
+Services/GatewayService/*/[Rr]eleases/
+Services/GatewayService/*/x64/
+Services/GatewayService/*/x86/
+Services/GatewayService/*/build/
+Services/GatewayService/*/bld/
+Services/GatewayService/*/[Bb]in/
+Services/GatewayService/*/[Oo]bj/
+Services/GatewayService/*/[Oo]ut/
+Services/GatewayService/*/msbuild.log
+Services/GatewayService/*/msbuild.err
+Services/GatewayService/*/msbuild.wrn
