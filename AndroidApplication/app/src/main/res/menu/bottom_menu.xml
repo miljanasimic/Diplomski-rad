@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/weather_bottom_menu"
+        android:menuCategory="secondary"
+        android:icon="@drawable/air_quality_icon"
+        android:id="@+id/WeatherFragment" />
+    <item android:title="@string/statistics_bottom_menu"
+        android:menuCategory="secondary"
+        android:icon="@drawable/statistic_icon"
+        android:id="@+id/StatisticsFragment"/>
+    <item android:title="@string/ranking_bottom_menu"
+        android:menuCategory="secondary"
+        android:icon="@drawable/ranking_icon"
+        android:id="@+id/RankingFragment"/>
+</menu>

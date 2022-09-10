@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/IntroFragment">
+    <fragment
+        android:id="@+id/IntroFragment"
+        android:name="com.elfak.qair.ui.IntroFragment"
+        tools:layout="@layout/fragment_intro">
+        <action
+            android:id="@+id/action_IntroFragment_to_WeatherFragment"
+            app:destination="@id/WeatherFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/WeatherFragment"
+        android:name="com.elfak.qair.ui.weather.WeatherFragment"
+        tools:layout="@layout/fragment_weather">
+    </fragment>
+
+    <fragment
+        android:id="@+id/StatisticsFragment"
+        android:name="com.elfak.qair.ui.statistics.StatisticsFragment"
+        tools:layout="@layout/fragment_statistics">
+    </fragment>
+
+    <fragment
+        android:id="@+id/RankingFragment"
+        android:name="com.elfak.qair.ui.ranking.RankingFragment"
+        tools:layout="@layout/fragment_ranking">
+    </fragment>
+
+</navigation>

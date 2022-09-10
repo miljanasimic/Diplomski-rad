@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.weather.WeatherFragment"
+        android:layout_margin= "16dp"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/weather_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/layout_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="horizontal"
+                >
+
+                <Button
+                    android:id="@+id/select_city_button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_button"
+                    android:textColor="@color/palette2_3"
+                    android:text="@string/select_city_button_text"
+                    app:cornerRadius="32dp"/>
+                <Button
+                    android:id="@+id/load_nearest_city_button"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:textColor="@color/palette2_3"
+                    android:text="@string/load_nearest_city_button_text"
+                    android:layout_margin="8dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_select_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_buttons"
+                android:orientation="vertical"
+                android:layout_marginVertical="12dp"
+                >
+                <ImageButton
+                    android:id="@+id/hide_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:src="@drawable/ic_baseline_close"
+                    android:layout_gravity="end"
+                    android:layout_margin="4dp"
+                    />
+                <Spinner
+                    android:id="@+id/countries_spinner"
+                    android:spinnerMode="dialog"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:hint="@string/countries_spinner_prompt"
+                    android:minHeight="42dp"
+                    android:prompt="@string/countries_spinner_prompt" />
+
+                <Spinner
+                    android:id="@+id/states_spinner"
+                    android:spinnerMode="dialog"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:hint="@string/states_spinner_prompt"
+                    android:minHeight="42dp"
+                    android:prompt="@string/states_spinner_prompt" />
+
+                <Spinner
+                    android:id="@+id/cities_spinner"
+                    android:spinnerMode="dialog"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:hint="@string/cities_spinner_prompt"
+                    android:minHeight="42dp"
+                    android:prompt="@string/cities_spinner_prompt"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_current_city_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_select_city"
+                android:orientation="vertical"
+                android:layout_marginVertical="20dp">
+
+                <TextView
+                    android:id="@+id/locationTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor = "@color/palette5"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+                <ImageView
+                    android:id="@+id/iconCodeImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200sp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/_1d"
+                    android:layout_marginVertical = "4dp"/>
+                <TextView
+                    android:id="@+id/tempTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:textSize= "24sp"
+                    android:textColor = "@color/palette5"
+                    android:textStyle="bold|italic"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginStart = "8dp">
+                    <TextView
+                        android:id="@+id/weatherTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/weather_text"
+                        android:textSize= "20sp"
+                        android:textColor = "@color/palette1"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop = "4dp"
+                        android:layout_marginBottom = "12dp"
+                        android:background="@color/palette4"
+                        android:elevation="3dp" />
+
+                    <TextView
+                        android:id="@+id/humidityTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize= "16sp"/>
+
+                    <TextView
+                        android:id="@+id/pressureTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize= "16sp"/>
+
+                    <TextView
+                        android:id="@+id/windSpeedTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize= "16sp"/>
+
+                    <TextView
+                        android:id="@+id/pollutionTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pollution_text"
+                        android:layout_marginTop = "20dp"
+                        android:textSize= "20sp"
+                        android:textColor = "@color/palette1"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop = "4dp"
+                        android:layout_marginBottom = "12dp"
+                        android:background="@color/palette4"
+                        android:elevation="3dp" />
+
+                    <TextView
+                        android:id="@+id/aqiUsaTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize= "16sp"/>
+
+                    <TextView
+                        android:id="@+id/aqiChinaTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize= "16sp"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBarWeatherPage"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

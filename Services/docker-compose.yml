@@ -1,0 +1,22 @@
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+  graphqlservice:
+    build: ./GraphQLService
+    ports:
+      - "3000:3000"
+    depends_on:
+      - "mongodb"
+  gatewayapi:
+    build: ./GatewayService
+    restart: always
+    ports:
+      - "5000:80"
+  grpcservice:
+    build: ./gRPCService
+    ports:
+      - "50051:50051"
+    depends_on:
+      - "mongodb"

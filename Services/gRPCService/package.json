@@ -1,0 +1,20 @@
+{
+  "name": "grpcservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Miljana Simic",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.6.12",
+    "@grpc/proto-loader": "^0.7.2",
+    "csv-parse": "^5.3.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.5.5",
+    "nodemon": "^2.0.19"
+  }
+}

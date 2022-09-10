@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package airqualityindexservice;
+
+
+service AirQualityIndexService {
+	rpc StreamCountryIndices(CountryRequest) returns (stream CountryAQIndexResponse) {}	
+}
+
+message CountryRequest {
+	string name = 1;
+}
+message CountryAQIndexResponse {
+	string date = 1;
+	string country = 2;
+	string status = 3;
+	int32 aqi_index = 4;
+}
