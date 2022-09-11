@@ -1,6 +1,7 @@
 package com.elfak.qair.ui.statistics
 
 import android.app.AlertDialog
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -52,7 +53,7 @@ class StatisticsFragment : Fragment() {
         }
 
         statisticsViewModel.country.observe(viewLifecycleOwner) { country ->
-            binding.textViewCurrentCountry.text = "Trenutni podaci za državu: ${country}"
+            binding.textViewCurrentCountry.text = "Podaci za državu: ${country}"
             binding.textViewCurrentCountry.visibility = View.VISIBLE
         }
 
@@ -64,11 +65,14 @@ class StatisticsFragment : Fragment() {
                 }
 
                 val dataSet = LineDataSet(entries, "Indeks kvaliteta vazduha meren svakog dana u prethodnih dva meseca")
+                dataSet.color = Color.rgb(61, 90, 128)
+                dataSet.setCircleColor(Color.rgb(152, 193, 217));
+                dataSet.highLightColor = Color.rgb(226, 149, 120);
+                dataSet.lineWidth = 2f
                 val lineData = LineData(dataSet)
                 binding.chart.xAxis.valueFormatter = ChartCustomFormatter()
                 binding.chart.data = lineData
                 binding.chart.description.isEnabled = false
-                binding.chart.setGridBackgroundColor(R.color.palette4)
                 binding.chart.invalidate()
                 binding.chart.visibility = View.VISIBLE
                 binding.progressBar.visibility = View.GONE

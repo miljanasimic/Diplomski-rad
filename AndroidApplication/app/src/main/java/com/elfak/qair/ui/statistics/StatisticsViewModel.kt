@@ -24,6 +24,7 @@ class StatisticsViewModel : ViewModel(){
 
     fun getCountryIndices(countryName: String){
         try{
+            _countryIndices.value?.clear()
             val channel = GrpcService().createManagedChannel()
             stub = AirQualityIndexServiceGrpc.newStub(channel)
             val request = CountryRequest.newBuilder().setName(countryName).build()
@@ -45,8 +46,7 @@ class StatisticsViewModel : ViewModel(){
                 }
             })
         } catch (ex: Exception){
-            ex.message
-            ex.toString()
+            _countryIndices.postValue(mutableListOf())
         }
 
     }
