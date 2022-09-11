@@ -5,12 +5,18 @@
       <map>
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/drawable-mdpi/rounded_layout.xml" value="0.176" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/drawable-xhdpi/bottom_nav_item_color.xml" value="0.1" />
+        <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/drawable/dialog_background.xml" value="0.2965" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/drawable/ic_baseline_close.xml" value="0.2965" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/drawable/rounded_button.xml" value="0.2145" />
+        <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/drawable/table_header_border.xml" value="0.1815" />
+        <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/drawable/table_row_border.xml" value="0.1815" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/activity_main.xml" value="0.15625" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/content_main.xml" value="0.1921875" />
+        <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/contry_rank_list_item.xml" value="0.24375" />
+        <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/country_rank_list_item.xml" value="0.3489583333333333" />
+        <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/fragment_country_dialog.xml" value="0.4" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/fragment_intro.xml" value="0.1" />
-        <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/fragment_ranking.xml" value="0.16041666666666668" />
+        <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/fragment_ranking.xml" value="0.264" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/fragment_statistics.xml" value="0.4" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/fragment_weather.xml" value="0.264" />
         <entry key="..\:/FAKS/Diplomski/Projekat-git/Diplomski-rad/AndroidApplication/app/src/main/res/layout/search_country_statistic.xml" value="0.196875" />

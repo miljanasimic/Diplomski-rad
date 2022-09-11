@@ -6,12 +6,9 @@ async function streamCountryIndices(call){
     const name = call.request.name
     try{
         const indices = await AirQualityIndex.find({country: name})
-        //let date = new proto.google.protobuf.Timestamp()
         _.each(indices, function(aqIndex){
-            //console.log(aqIndex.date)
-            console.log("cap",aqIndex.date)
             call.write({
-                country: "cao",
+                country: aqIndex.country,
                 aqi_index: aqIndex.aqi_index,
                 status: aqIndex.date,
                 date: {

@@ -14,6 +14,7 @@ const typeDefinitions = `
 
   type RootQuery {
     getCountries: [Country!]!
+    getCountry(countryName: String!): Country!
   }
 
   schema {

@@ -1,0 +1,8 @@
+query CountryList {
+  getCountries {
+    rank
+    country
+    total
+    climate
+  }
+}

@@ -1,14 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ranking.RankingFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        tools:context=".ui.ranking.RankingFragment"
+        android:paddingBottom="?android:attr/actionBarSize"
+        android:background="#fdfffc">
 
-</FrameLayout>
+        <FrameLayout
+            android:id="@+id/frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/info_button"
+                android:contentDescription="Detalji"
+                android:layout_margin="12dp"
+                android:elevation="6dp"
+                android:layout_gravity="end|top"
+                android:backgroundTint="@color/palette2_4"
+                app:backgroundTint = "@color/palette2_5"
+                app:borderWidth="1dp"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="?android:attr/actionBarSize"
+                android:layout_marginHorizontal="12dp"
+                android:id="@+id/description_layout"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:padding="12dp"
+                android:background="@drawable/table_header_border"
+                >
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rank"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/country"
+                    android:layout_gravity="center_vertical"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/weather"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/country_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/frame_layout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="20dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

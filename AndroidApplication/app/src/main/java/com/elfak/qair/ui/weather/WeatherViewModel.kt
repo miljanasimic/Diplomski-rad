@@ -9,7 +9,7 @@ import com.elfak.qair.data.response.CitiesInStateCountyApiResponse
 import com.elfak.qair.data.response.CityCurrentDataApiResponse
 import com.elfak.qair.data.response.StatesInCountryApiResponse
 import com.elfak.qair.data.response.SupportedCountriesApiResponse
-import com.elfak.qair.network.IQAirApi
+import com.elfak.qair.network.rest.IQAirApi
 import kotlinx.coroutines.launch
 import java.util.Collections.emptyList
 

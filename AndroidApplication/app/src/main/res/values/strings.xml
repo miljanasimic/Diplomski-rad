@@ -7,7 +7,7 @@
     <string name="ranking_bottom_menu">Rangiranje</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!-- Strings related to bottom menu-->
+    <!-- Strings related to intro page-->
     <string name="get_started">Nastavi</string>
     <string name="intro_text">Lorem ipsum dolor sit amet,
         consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -17,7 +17,7 @@
         dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
 
-    <!-- Strings related to bottom menu-->
+    <!-- Strings related to weather page-->
     <string name="countries_spinner_prompt">Izaberite državu</string>
     <string name="cities_spinner_prompt">Izaberite grad</string>
     <string name="states_spinner_prompt">Izaberite oblast</string>
@@ -26,4 +26,22 @@
     <string name="load_nearest_city_button_text">Pristupi lokaciji</string>
     <string name="weather_text">Vreme</string>
     <string name="pollution_text">Zagađenost</string>
+
+    <!-- Strings related to ranking page-->
+    <string name="rank">Rang</string>
+    <string name="country">Država</string>
+    <string name="weather">Klimatski uslovi</string>
+    <string name="total">Ukupno</string>
+    <string name="stability_text">Ekonomska i politička stabilnost</string>
+    <string name="rights_text">Pravni sistem i građanska prava</string>
+    <string name="health_text">Zdravstvene usluge</string>
+    <string name="safety_text">Bezbednost</string>
+    <string name="climate_text">Klima</string>
+    <string name="costs_text">Troškovi</string>
+    <string name="popularity_text">Popularnost</string>
+    <string name="total_text">Ukupan indeks</string>
+    <string name="desc_text">Da bi se došlo do ukupnog indeksa za svaku zemlju, ovi faktori su uključeni u različitim proporcijama:</string>
+    <string name="desc_20_text">20% pravni sistem i građanska prava</string>
+    <string name="desc_15_text">15% stabilnost, zdravstvene usluge, klima i troškovi</string>
+    <string name="desc_10_text">10% bezbednost i popularnost</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.elfak.qair.network
+package com.elfak.qair.network.rest
 
 import com.elfak.qair.data.helper.CustomDateAdapter
 import com.elfak.qair.data.response.CitiesInStateCountyApiResponse
@@ -11,7 +11,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
-import java.util.*
 
 private const val BASE_URL = "http://192.168.100.14:5000"
 private val moshi = Moshi.Builder()

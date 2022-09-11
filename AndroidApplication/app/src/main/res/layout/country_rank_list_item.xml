@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:id="@+id/country_rank_list_item"
+    android:background="@drawable/table_row_border"
+    >
+    <TextView
+        android:id="@+id/country_rank"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/country_name"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/country_weather"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/country_total"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+
+</LinearLayout>

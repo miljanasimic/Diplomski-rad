@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const countryQualitySchema = new mongoose.Schema({
     rank: Number,
-    country: String,
+    country: { type: String, index: true },
     stability: Number,
     rights: Number,
     health: Number,

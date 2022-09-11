@@ -1,0 +1,14 @@
+query Country($countryName: String!) {
+  getCountry(countryName: $countryName) {
+    country
+    rank
+    stability
+    rights
+    health
+    safety
+    climate
+    costs
+    popularity
+    total
+  }
+}

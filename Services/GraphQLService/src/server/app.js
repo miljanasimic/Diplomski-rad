@@ -15,7 +15,7 @@ async function startGqlServer(){
 
 async function fillDatabase(){
     const dataCount = await CountryQuality.countDocuments();
-    if(dataCount == 0){
+    if(dataCount == 0) {
         console.log('Countries collection is empty... countries...')
         insertData('./data/quality-of-life.csv', CountryQuality)
     }
