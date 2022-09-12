@@ -16,6 +16,8 @@ import com.elfak.qair.ui.helpers.ChartCustomFormatter
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.highlight.Highlight
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 
 class StatisticsFragment : Fragment() {
 
@@ -83,6 +85,7 @@ class StatisticsFragment : Fragment() {
                 Toast.makeText(requireContext(), "Aplikacija nema podatke za ovu državu, probajte malo kasnije.", Toast.LENGTH_SHORT).show()
             }
         }
+
         statisticsViewModel.getCountryIndices("Serbia")
     }
 

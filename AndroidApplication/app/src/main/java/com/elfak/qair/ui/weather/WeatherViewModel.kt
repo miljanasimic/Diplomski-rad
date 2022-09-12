@@ -1,5 +1,6 @@
 package com.elfak.qair.ui.weather
 
+import android.location.Location
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -75,6 +76,21 @@ class WeatherViewModel : ViewModel(){
         viewModelScope.launch {
             try{
                 val result = IQAirApi.retrofitService.getCityCurrentData(_city.value!!, _state.value!!, _country.value!!)
+                _cityCurrentData.value = result
+            } catch (ex: Exception){
+                Log.wtf(".", ex)
+                _cityCurrentData.value = CityCurrentDataApiResponse(ex.message!!, null)
+            }
+        }
+    }
+
+    fun getNearestCityData(currentLocation: Location) {
+        viewModelScope.launch {
+            try{
+                val result = IQAirApi.retrofitService.getNearestCityCurrentData(currentLocation.latitude, currentLocation.longitude)
+                _country.value = result.data?.country
+                _state.value = result.data?.state
+                _city.value = result.data?.city
                 _cityCurrentData.value = result
             } catch (ex: Exception){
                 Log.wtf(".", ex)

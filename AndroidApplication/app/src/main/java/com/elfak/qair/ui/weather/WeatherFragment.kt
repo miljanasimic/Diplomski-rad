@@ -1,5 +1,9 @@
 package com.elfak.qair.ui.weather
 
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import android.location.LocationManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,13 +12,16 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.elfak.qair.data.City
 import com.elfak.qair.data.Country
 import com.elfak.qair.data.State
 import com.elfak.qair.databinding.FragmentWeatherBinding
-
+import com.elfak.qair.ui.helpers.LocationHelpers
+import com.google.android.gms.location.*
 
 
 class WeatherFragment : Fragment() {
@@ -24,7 +31,7 @@ class WeatherFragment : Fragment() {
     private val weatherViewModel: WeatherViewModel by viewModels()
     private var selectedCountry: Int = 0
     private var selectedState: Int = 0
-
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,9 +44,10 @@ class WeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+
         binding.layoutSelectCity.visibility = View.GONE
         binding.layoutCurrentCityData.visibility = View.GONE
-
 
         binding.selectCityButton.setOnClickListener {
             binding.progressBarWeatherPage.visibility = View.VISIBLE
@@ -100,7 +108,6 @@ class WeatherFragment : Fragment() {
             weatherViewModel.getCityData()
         }
 
-
         weatherViewModel.supportedCountries.observe(viewLifecycleOwner){ result ->
             binding.progressBarWeatherPage.visibility = View.GONE
             if(result.status!="success"){
@@ -132,7 +139,6 @@ class WeatherFragment : Fragment() {
             populateCitiesSpinner(binding.citiesSpinner, result.cities)
         }
         weatherViewModel.cityCurrentData.observe(viewLifecycleOwner) { result ->
-            //binding.layoutSelectCity.visibility = View.GONE
             binding.progressBarWeatherPage.visibility = View.GONE
             if(result.status!="success" || result.data==null){
                 Toast.makeText(requireContext(), "Došlo je do greške prilikom učitavanja trenutnih podataka, molimo Vas probajte malo kasnije.", Toast.LENGTH_SHORT).show()
@@ -143,20 +149,24 @@ class WeatherFragment : Fragment() {
 
             binding.iconCodeImageView.setImageResource(resources.getIdentifier(cityData.current.weather.iconCode.replace('0','_'), "drawable", context?.packageName))
             binding.tempTextView.text = cityData.current.weather.tempCelsius.toString() + " \u2103"
-            binding.humidityTextView.text = "Vlažnost vazduha: "+cityData.current.weather.humidity.toString() + "%"
-            binding.pressureTextView.text = "Pritisak vazduha: "+cityData.current.weather.pressure.toString() + "hPa"
-            binding.windSpeedTextView.text = "Brzina vetra: "+cityData.current.weather.windSpeed + "m/s"
+            binding.humidityTextView.text = "Vlažnost vazduha: "+ cityData.current.weather.humidity.toString() + "%"
+            binding.pressureTextView.text = "Pritisak vazduha: "+ cityData.current.weather.pressure.toString() + "hPa"
+            binding.windSpeedTextView.text = "Brzina vetra: "+ cityData.current.weather.windSpeed + "m/s"
 
             binding.aqiUsaTextView.text = "${cityData.current.pollution.aqius} \u00B5g/m\u00B3 \u2933 Američki standard"
             binding.aqiChinaTextView.text = "${cityData.current.pollution.aqicn} \u00B5g/m\u00B3 ⤳ Kineski standard"
 
 
             binding.layoutCurrentCityData.visibility = View.VISIBLE
-            Toast.makeText(requireContext(), "${result.data?.city}, ${result.data?.current?.weather?.iconCode}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "${result.data.city}, ${result.data.current.weather.iconCode}", Toast.LENGTH_SHORT).show()
 
         }
 
+        binding.loadNearestCityButton.setOnClickListener { loadNearestCityData() }
+
     }
+
+
     private fun populateCountriesSpinner(
         countriesSpinner: Spinner, countries: List<Country>
     ) {
@@ -185,6 +195,45 @@ class WeatherFragment : Fragment() {
         val index = cities.indexOfLast { it.name == "Belgrade" }
         citiesSpinner.setSelection(index)
 
+    }
+
+    private fun checkPermission(): Boolean {
+        val resultFineLocation = ContextCompat.checkSelfPermission(requireActivity().applicationContext, Manifest.permission.ACCESS_FINE_LOCATION)
+        val resultCoarseLocation = ContextCompat.checkSelfPermission(requireActivity().applicationContext, Manifest.permission.ACCESS_COARSE_LOCATION)
+        return resultFineLocation == PackageManager.PERMISSION_GRANTED && resultCoarseLocation == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestPermission() {
+        ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION), 2)
+    }
+
+    private fun isLocationEnabled(): Boolean {
+        val locationManager: LocationManager = (context?.getSystemService(Context.LOCATION_SERVICE) as LocationManager)
+        return locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER) || locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+    }
+
+    private fun loadNearestCityData() {
+        when(this.isLocationEnabled()) {
+            false -> {
+                val locationRequest = LocationHelpers.buildLocationRequest()
+                LocationHelpers.buildLocationSettings(locationRequest, requireActivity())
+                Toast.makeText(requireContext(), "Molimo Vas uključite lokaciju.", Toast.LENGTH_SHORT).show()
+            }
+            true -> {
+                if(!checkPermission()){
+                    requestPermission()
+                    return
+                }
+                fusedLocationClient.lastLocation
+                    .addOnSuccessListener { location ->
+                        binding.progressBarWeatherPage.visibility = View.VISIBLE
+                        weatherViewModel.getNearestCityData(location)
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(requireContext(), "Došlo je do greške prilikom očitavanja lokacije, probajte ponovo.", Toast.LENGTH_SHORT).show()
+                    }
+            }
+        }
     }
 
 }

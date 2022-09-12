@@ -42,7 +42,7 @@ interface IQAirApiService {
 
     @GET("CityCurrentData/{latitude}/{longitude}")
     suspend fun getNearestCityCurrentData(@Path("latitude") latitude: Double,
-                                   @Path("stateName") stateName: Double): CityCurrentDataApiResponse
+                                   @Path("longitude") longitude: Double): CityCurrentDataApiResponse
 }
 
 object IQAirApi {
