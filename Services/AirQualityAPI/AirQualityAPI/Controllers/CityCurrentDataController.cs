@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using GatewayLogic.Interfaces;
+using ServiceLogic.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System;
 

@@ -43,6 +43,7 @@ class StatisticsViewModel : ViewModel(){
                     if(_countryIndices.value?.size!! >0)
                         _country.postValue(countryName)
                     _countryIndices.postValue(_countryIndices.value)
+                    channel.shutdown()
                 }
             })
         } catch (ex: Exception){

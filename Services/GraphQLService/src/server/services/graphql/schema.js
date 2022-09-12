@@ -22,5 +22,4 @@ const typeDefinitions = `
   }  
 `
 
-
 module.exports = typeDefinitions

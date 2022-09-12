@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GatewayLogic\GatewayLogic.csproj" />
+    <ProjectReference Include="..\ServiceLogic\ServiceLogic.csproj" />
   </ItemGroup>
 
 </Project>

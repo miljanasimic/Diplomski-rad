@@ -20,6 +20,7 @@ import com.elfak.qair.data.City
 import com.elfak.qair.data.Country
 import com.elfak.qair.data.State
 import com.elfak.qair.databinding.FragmentWeatherBinding
+import com.elfak.qair.ui.helpers.AirQualityIndexCalculation
 import com.elfak.qair.ui.helpers.LocationHelpers
 import com.google.android.gms.location.*
 
@@ -155,11 +156,9 @@ class WeatherFragment : Fragment() {
 
             binding.aqiUsaTextView.text = "${cityData.current.pollution.aqius} \u00B5g/m\u00B3 \u2933 Američki standard"
             binding.aqiChinaTextView.text = "${cityData.current.pollution.aqicn} \u00B5g/m\u00B3 ⤳ Kineski standard"
-
+            AirQualityIndexCalculation.returnCHDescription(cityData.current.pollution.aqicn)
 
             binding.layoutCurrentCityData.visibility = View.VISIBLE
-            Toast.makeText(requireContext(), "${result.data.city}, ${result.data.current.weather.iconCode}", Toast.LENGTH_SHORT).show()
-
         }
 
         binding.loadNearestCityButton.setOnClickListener { loadNearestCityData() }

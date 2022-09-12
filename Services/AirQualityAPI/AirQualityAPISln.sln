@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GatewayAPI", "GatewayAPI\GatewayAPI.csproj", "{ADF9ACC0-F8BB-4429-A72B-77D95CD19389}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirQualityAPI", "AirQualityAPI\AirQualityAPI.csproj", "{ADF9ACC0-F8BB-4429-A72B-77D95CD19389}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GatewayLogic", "GatewayLogic\GatewayLogic.csproj", "{3C2E091D-E9BC-4A8B-9093-6ABBDB5121E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceLogic", "ServiceLogic\ServiceLogic.csproj", "{3C2E091D-E9BC-4A8B-9093-6ABBDB5121E8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{CE48E23B-9FD8-4EEC-B66B-EF16FAD2F4D4}"
 EndProject

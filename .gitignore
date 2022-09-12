@@ -26,21 +26,21 @@ AndroidApplication/captures/
 Services/GraphQLService/node_modules
 Services/gRPCService/node_modules
 
-Services/GatewayService/.vscode
-Services/GatewayService/.vs
+Services/AirQualityAPI/.vscode
+Services/AirQualityAPI/.vs
 
 # Build results
-Services/GatewayService/*/[Dd]ebug/
-Services/GatewayService/*/[Dd]ebugPublic/
-Services/GatewayService/*/[Rr]elease/
-Services/GatewayService/*/[Rr]eleases/
-Services/GatewayService/*/x64/
-Services/GatewayService/*/x86/
-Services/GatewayService/*/build/
-Services/GatewayService/*/bld/
-Services/GatewayService/*/[Bb]in/
-Services/GatewayService/*/[Oo]bj/
-Services/GatewayService/*/[Oo]ut/
-Services/GatewayService/*/msbuild.log
-Services/GatewayService/*/msbuild.err
-Services/GatewayService/*/msbuild.wrn
+Services/AirQualityAPI/*/[Dd]ebug/
+Services/AirQualityAPI/*/[Dd]ebugPublic/
+Services/AirQualityAPI/*/[Rr]elease/
+Services/AirQualityAPI/*/[Rr]eleases/
+Services/AirQualityAPI/*/x64/
+Services/AirQualityAPI/*/x86/
+Services/AirQualityAPI/*/build/
+Services/AirQualityAPI/*/bld/
+Services/AirQualityAPI/*/[Bb]in/
+Services/AirQualityAPI/*/[Oo]bj/
+Services/AirQualityAPI/*/[Oo]ut/
+Services/AirQualityAPI/*/msbuild.log
+Services/AirQualityAPI/*/msbuild.err
+Services/AirQualityAPI/*/msbuild.wrn

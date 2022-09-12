@@ -1,13 +1,13 @@
 ﻿using DataLayer.DTOs;
 using DataLayer.Models;
-using GatewayLogic.Interfaces;
+using ServiceLogic.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace GatewayLogic.Services
+namespace ServiceLogic.Services
 {
     public class SupportedDestinationsService : ISupportedDestinationsService
     {
@@ -18,7 +18,7 @@ namespace GatewayLogic.Services
             _HttpClientFactory = httpClientFactory;
         }
 
-        public async Task<GatewayApiResponse<SupportedCountriesDTO>> GetSupportedCountries()
+        public async Task<ApiResponse<SupportedCountriesDTO>> GetSupportedCountries()
         {
             try
             {
@@ -32,13 +32,13 @@ namespace GatewayLogic.Services
                     }
                 }
                 if (supportedCountries==null)
-                    return new GatewayApiResponse<SupportedCountriesDTO>
+                    return new ApiResponse<SupportedCountriesDTO>
                     {
                         IsSuccess = false,
                         ErrorMessage = "There was an error fetching countries."
                     };
 
-                return new GatewayApiResponse<SupportedCountriesDTO>
+                return new ApiResponse<SupportedCountriesDTO>
                 {
                     ResponseContent = supportedCountries,
                     IsSuccess = true
@@ -46,7 +46,7 @@ namespace GatewayLogic.Services
 
             } catch (Exception ex)
             {
-                return new GatewayApiResponse<SupportedCountriesDTO>
+                return new ApiResponse<SupportedCountriesDTO>
                 {
                     IsSuccess = false,
                     ErrorMessage = ex.Message
@@ -54,7 +54,7 @@ namespace GatewayLogic.Services
             }
         }
 
-        public async Task<GatewayApiResponse<SupportedStatesDTO>> GetSupportedStates(string countryName)
+        public async Task<ApiResponse<SupportedStatesDTO>> GetSupportedStates(string countryName)
         {
             try
             {
@@ -68,13 +68,13 @@ namespace GatewayLogic.Services
                     }
                 }
                 if (supportedStates == null)
-                    return new GatewayApiResponse<SupportedStatesDTO>
+                    return new ApiResponse<SupportedStatesDTO>
                     {
                         IsSuccess = false,
                         ErrorMessage = "There was an error fetching states."
                     };
 
-                return new GatewayApiResponse<SupportedStatesDTO>
+                return new ApiResponse<SupportedStatesDTO>
                 {
                     ResponseContent = supportedStates,
                     IsSuccess = true
@@ -83,7 +83,7 @@ namespace GatewayLogic.Services
             }
             catch (Exception ex)
             {
-                return new GatewayApiResponse<SupportedStatesDTO>
+                return new ApiResponse<SupportedStatesDTO>
                 {
                     IsSuccess = false,
                     ErrorMessage = ex.Message
@@ -91,7 +91,7 @@ namespace GatewayLogic.Services
             }
         }
 
-        public async Task<GatewayApiResponse<SupportedCitiesDTO>> GetSupportedCities(string countryName, string stateName)
+        public async Task<ApiResponse<SupportedCitiesDTO>> GetSupportedCities(string countryName, string stateName)
         {
             try
             {
@@ -105,13 +105,13 @@ namespace GatewayLogic.Services
                     }
                 }
                 if (supportedCities == null)
-                    return new GatewayApiResponse<SupportedCitiesDTO>
+                    return new ApiResponse<SupportedCitiesDTO>
                     {
                         IsSuccess = false,
                         ErrorMessage = "There was an error fetching cities."
                     };
 
-                return new GatewayApiResponse<SupportedCitiesDTO>
+                return new ApiResponse<SupportedCitiesDTO>
                 {
                     ResponseContent = supportedCities,
                     IsSuccess = true
@@ -120,7 +120,7 @@ namespace GatewayLogic.Services
             }
             catch (Exception ex)
             {
-                return new GatewayApiResponse<SupportedCitiesDTO>
+                return new ApiResponse<SupportedCitiesDTO>
                 {
                     IsSuccess = false,
                     ErrorMessage = ex.Message

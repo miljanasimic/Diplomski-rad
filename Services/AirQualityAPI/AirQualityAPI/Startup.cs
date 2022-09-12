@@ -5,8 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using GatewayLogic.Interfaces;
-using GatewayLogic.Services;
+using ServiceLogic.Interfaces;
+using ServiceLogic.Services;
 
 namespace GatewayAPI
 {
@@ -25,8 +25,8 @@ namespace GatewayAPI
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "GatewayAPI", Version = "v1" });            });
-
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "AirQualityAPI", Version = "v1" });            
+            });
            
             services.AddScoped<ICityCurrentDataService, CityCurrentDataService>();
             services.AddScoped<ISupportedDestinationsService, SupportedDestinationsService>();

@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace GatewayLogic
+namespace ServiceLogic
 {
     public static class Common
     {

@@ -4,10 +4,10 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using DataLayer.DTOs;
 using DataLayer.Models;
-using GatewayLogic.Interfaces;
+using ServiceLogic.Interfaces;
 using Newtonsoft.Json;
 
-namespace GatewayLogic.Services
+namespace ServiceLogic.Services
 {
     public class CityCurrentDataService : ICityCurrentDataService
     {
@@ -18,7 +18,7 @@ namespace GatewayLogic.Services
             _HttpClientFactory = httpClientFactory;
         }
 
-        public async Task<GatewayApiResponse<CityCurrentDataDTO>> GetNearestCityData(double latitude, double longitude)
+        public async Task<ApiResponse<CityCurrentDataDTO>> GetNearestCityData(double latitude, double longitude)
         {
             try
             {
@@ -35,13 +35,13 @@ namespace GatewayLogic.Services
                 }
 
                 if (cityData==null)
-                    return new GatewayApiResponse<CityCurrentDataDTO>
+                    return new ApiResponse<CityCurrentDataDTO>
                     {
                         IsSuccess = false,
                         ErrorMessage = ""
                     };
 
-                return new GatewayApiResponse<CityCurrentDataDTO>
+                return new ApiResponse<CityCurrentDataDTO>
                 {
                     ResponseContent = cityData,
                     IsSuccess = true
@@ -50,7 +50,7 @@ namespace GatewayLogic.Services
             }
             catch (Exception e)
             {
-                return new GatewayApiResponse<CityCurrentDataDTO>
+                return new ApiResponse<CityCurrentDataDTO>
                 {
                     IsSuccess = false,
                     ErrorMessage = e.Message
@@ -58,7 +58,7 @@ namespace GatewayLogic.Services
             }
         }
 
-        public async Task<GatewayApiResponse<CityCurrentDataDTO>> GetCityData(string city, string state, string country)
+        public async Task<ApiResponse<CityCurrentDataDTO>> GetCityData(string city, string state, string country)
         {
             try
             {
@@ -73,13 +73,13 @@ namespace GatewayLogic.Services
                 }
 
                 if (cityData == null)
-                    return new GatewayApiResponse<CityCurrentDataDTO>
+                    return new ApiResponse<CityCurrentDataDTO>
                     {
                         IsSuccess = false,
                         ErrorMessage = ""
                     };
 
-                return new GatewayApiResponse<CityCurrentDataDTO>
+                return new ApiResponse<CityCurrentDataDTO>
                 {
                     ResponseContent = cityData,
                     IsSuccess = true
@@ -88,7 +88,7 @@ namespace GatewayLogic.Services
             }
             catch (Exception e)
             {
-                return new GatewayApiResponse<CityCurrentDataDTO>
+                return new ApiResponse<CityCurrentDataDTO>
                 {
                     IsSuccess = false,
                     ErrorMessage = e.Message

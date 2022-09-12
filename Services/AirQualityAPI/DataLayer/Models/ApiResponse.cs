@@ -1,6 +1,6 @@
 ﻿namespace DataLayer.Models
 {
-    public class GatewayApiResponse<T>
+    public class ApiResponse<T>
     {
         public bool IsSuccess { get; set; }
 
