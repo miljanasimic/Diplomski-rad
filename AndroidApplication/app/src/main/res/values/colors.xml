@@ -22,4 +22,12 @@
     <color name="palette2_5">#E29578</color>
 
     <color name="bottomMenuClicked">#0582ca</color>
+
+    <color name="airValue1">#00ff00</color>
+    <color name="airValue2">#91df00</color>
+    <color name="airValue3">#c4ba00</color>
+    <color name="airValue4">#e59100</color>
+    <color name="airValue5">#f96000</color>
+    <color name="airValue6">#ff0000</color>
+
 </resources>

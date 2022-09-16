@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         tools:context=".ui.weather.WeatherFragment"
         android:layout_margin= "16dp"
+        android:paddingBottom="?android:attr/actionBarSize"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/weather_layout"
@@ -118,7 +119,7 @@
                 <ImageView
                     android:id="@+id/iconCodeImageView"
                     android:layout_width="wrap_content"
-                    android:layout_height="200sp"
+                    android:layout_height="170sp"
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/_1d"
                     android:layout_marginVertical = "4dp"/>
@@ -190,17 +191,148 @@
                         android:background="@color/palette4"
                         android:elevation="3dp" />
 
-                    <TextView
-                        android:id="@+id/aqiUsaTextView"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize= "16sp"/>
+                        android:orientation="horizontal">
+                        <TextView
+                            android:text="Kvalitet vazduha"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize= "16sp"/>
+
+                        <TextView
+                            android:text="Glavni zagađivač"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize= "16sp" />
+                        <TextView
+                            android:text="Indeks kvaliteta vazduha"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize= "16sp" />
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginHorizontal="4dp"
+                        android:layout_marginTop = "4dp"
+                        android:layout_marginBottom = "12dp"
+                        android:background="@color/palette2"
+                        android:elevation="3dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/aqiUsaQuality"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize= "16sp"/>
+                        <TextView
+                            android:id="@+id/mainUsa"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize= "16sp"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/aqiUsaValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize= "16sp"
+                                android:layout_marginEnd="4dp"/>
+                            <ImageView
+                                android:id="@+id/usaColor"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:src="@drawable/circle"
+                                android:layout_marginTop="6dp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                     <TextView
-                        android:id="@+id/aqiChinaTextView"
+                        android:text="Američki standard"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize= "16sp"/>
+                        android:textSize= "14sp"
+                        android:textAlignment="center"
+                        android:layout_marginTop="4dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginHorizontal="4dp"
+                        android:layout_marginTop = "4dp"
+                        android:layout_marginBottom = "12dp"
+                        android:background="@color/palette2"
+                        android:elevation="3dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/aqiChinaQuality"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize= "16sp"/>
+
+                        <TextView
+                            android:id="@+id/mainCh"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize= "16sp"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/aqiChinaValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize= "16sp"
+                                android:layout_marginEnd="4dp"/>
+                            <ImageView
+                                android:id="@+id/chinaColor"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:src="@drawable/circle"
+                                android:layout_marginTop="6dp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:text="Kineski standard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize= "14sp"
+                        android:textAlignment="center"
+                        android:layout_marginTop="4dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginHorizontal="4dp"
+                        android:layout_marginTop = "4dp"
+                        android:layout_marginBottom = "12dp"
+                        android:background="@color/palette2"
+                        android:elevation="3dp" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -218,8 +350,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:visibility="gone"/>
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

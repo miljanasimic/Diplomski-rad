@@ -8,16 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.elfak.qair.R
 import com.elfak.qair.databinding.FragmentStatisticsBinding
+import com.elfak.qair.ui.helpers.AirQualityIndexCalculation
 import com.elfak.qair.ui.helpers.ChartCustomFormatter
+import com.github.mikephil.charting.components.LimitLine
+import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.highlight.Highlight
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener
+
 
 class StatisticsFragment : Fragment() {
 
@@ -62,14 +65,15 @@ class StatisticsFragment : Fragment() {
         statisticsViewModel.countryIndices.observe(viewLifecycleOwner) { indices ->
             if(indices.size!=0){
                 val entries: MutableList<Entry> = ArrayList()
+                val colors = ArrayList<Int>()
                 indices.forEach {
                     entries.add(Entry(it.date.seconds.toFloat(), it.aqiIndex.toFloat()))
+                    colors.add(ContextCompat.getColor(requireContext(), AirQualityIndexCalculation.returnColor(it.aqiIndex)))
                 }
-
                 val dataSet = LineDataSet(entries, "Indeks kvaliteta vazduha meren svakog dana u prethodnih dva meseca")
                 dataSet.color = Color.rgb(61, 90, 128)
-                dataSet.setCircleColor(Color.rgb(152, 193, 217));
-                dataSet.highLightColor = Color.rgb(226, 149, 120);
+                dataSet.circleColors = colors
+                dataSet.highLightColor = Color.rgb(226, 149, 120)
                 dataSet.lineWidth = 2f
                 val lineData = LineData(dataSet)
                 binding.chart.xAxis.valueFormatter = ChartCustomFormatter()

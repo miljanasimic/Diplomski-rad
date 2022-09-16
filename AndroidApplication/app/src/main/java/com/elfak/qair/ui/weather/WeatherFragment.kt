@@ -3,6 +3,7 @@ package com.elfak.qair.ui.weather
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.drawable.GradientDrawable
 import android.location.LocationManager
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,6 +24,7 @@ import com.elfak.qair.databinding.FragmentWeatherBinding
 import com.elfak.qair.ui.helpers.AirQualityIndexCalculation
 import com.elfak.qair.ui.helpers.LocationHelpers
 import com.google.android.gms.location.*
+import com.elfak.qair.R
 
 
 class WeatherFragment : Fragment() {
@@ -154,8 +156,17 @@ class WeatherFragment : Fragment() {
             binding.pressureTextView.text = "Pritisak vazduha: "+ cityData.current.weather.pressure.toString() + "hPa"
             binding.windSpeedTextView.text = "Brzina vetra: "+ cityData.current.weather.windSpeed + "m/s"
 
-            binding.aqiUsaTextView.text = "${cityData.current.pollution.aqius} \u00B5g/m\u00B3 \u2933 Američki standard"
-            binding.aqiChinaTextView.text = "${cityData.current.pollution.aqicn} \u00B5g/m\u00B3 ⤳ Kineski standard"
+            val circleCh = binding.chinaColor.drawable as GradientDrawable
+            val circleUs = binding.usaColor.drawable as GradientDrawable
+            circleCh.setColor(ContextCompat.getColor(requireContext(), AirQualityIndexCalculation.returnColor(cityData.current.pollution.aqicn)))
+            circleUs.setColor(ContextCompat.getColor(requireContext(), AirQualityIndexCalculation.returnColor(cityData.current.pollution.aqius)))
+            binding.aqiUsaQuality.text = AirQualityIndexCalculation.returnUSDescription(cityData.current.pollution.aqius).desc
+            binding.aqiChinaQuality.text = AirQualityIndexCalculation.returnCHDescription(cityData.current.pollution.aqicn).desc
+
+            binding.mainCh.text = AirQualityIndexCalculation.returnMainPollutant(cityData.current.pollution.maincn).desc
+            binding.mainUsa.text = AirQualityIndexCalculation.returnMainPollutant(cityData.current.pollution.mainus).desc
+            binding.aqiUsaValue.text = "${cityData.current.pollution.aqius} \u00B5g/m\u00B3"
+            binding.aqiChinaValue.text = "${cityData.current.pollution.aqicn} \u00B5g/m\u00B3"
             AirQualityIndexCalculation.returnCHDescription(cityData.current.pollution.aqicn)
 
             binding.layoutCurrentCityData.visibility = View.VISIBLE
